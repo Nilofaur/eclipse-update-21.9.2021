@@ -1,0 +1,166 @@
+# ------------------------------------------------------------------------
+# build.properties.sample
+#
+# This is an example "build.properties" file, used to customize building
+# jakarta-taglibs for your local environment.  Make any changes you need,
+# and rename this file to "build.properties" in the same directory that
+# contains the top level "build.xml" file.
+#
+# -----------------------------------------------------------------------------
+
+# The base directory of your jakarta-taglibs distribution
+# This must be set to an absolute path so that it works
+# both for the global build and individual taglib builds.
+base.dir=${user.home}/jakarta/jakarta-taglibs
+
+# servlet.jar must be defined to sucessfully build taglibs
+
+# The default jar file for the Servlet and JSP API classes.
+servlet.jar=${base.dir}/../jakarta-servletapi/dist/lib/servlet.jar
+
+# The default jar file for the Servlet 2.2 and JSP 1.1 API classes.
+# Optional, could be used by taglibs that explicitely need 
+# Servlet 2.2 and JSP 1.1 API classes.
+# The Servlet 2.2 and JSP 1.1 jar can be obtained from
+# http://jakarta.apache.org/tomcat/ as a Tomcat 3.2 binary download.
+servlet22.jar=${base.dir}/../jakarta-servletapi/dist/lib/servlet.jar
+
+# The default jar file for the Servlet 2.3 and JSP 1.2 API classes.
+# Used for building taglibs which use JSP 1.2 features.
+# The Servlet 2.3 and JSP 1.2 jar can be obtained from 
+# http://jakarta.apache.org/tomcat/ as a Tomcat 4.0 binary download.
+servlet23.jar=${base.dir}/../jakarta-servletapi-4/dist/lib/servlet.jar
+
+# The remaining properties are for supporting taglibs which
+# require the use of additional Java API's.
+
+# Standard (JSTL RI) and dbtags require the Sun JDBC 2.0 Optional Package
+# (Standard Extensions).
+# http://java.sun.com/products/jdbc/download.html
+# This can be installed in your $JAVA_HOME/jre/lib/ext directory
+# and uncomment the below property and set its path to the jdbc
+# 2.0 Standard Extensions jar file.
+#jdbc2_0-stdext.jar=
+
+# Standard (JSTL RI) will in the future depend on the JAXP API.
+# (http://java.sun.com/xml)
+# [ The build process for Standard does not currently require these but
+#   may use jaxp-api.jar, dom.jar, and sax.jar in the future. ]
+##jaxp-api.jar=
+##dom.jar=
+##sax.jar=
+
+# Standard (JSTL RI) depends on a JAXP-compatible parser.
+# (http://java.sun.com/xml)
+# [ The build process for Standard currently uses crimson.jar; it may
+#   use xercesImpl.jar in the future. ]
+#crimson.jar
+##xercesImpl.jar=
+
+# Standard (JSTL RI) requires a JAXP-compatible XSLT processor.
+#xalan.jar=
+
+# log requires the log4j-core API.
+# http://jakarta.apache.org/log4j/docs/download.html
+# Uncomment the below and set the path to the log4j-core.jar file.
+#log4j-core.jar=
+
+# Both the xsl and xtags taglibs require xalan as their XSL API.
+# http://xml.apache.org/xalan
+# Uncomment the below and set the path to the xalan.jar
+#xalan.jar=
+
+# xtags requires xalanj1compat.jar from Xalan 2 to create the
+# backward compatable tag (Only needed for Xalan 1 compatability)
+# http://xml.apache.org/xalan
+# Uncomment the below and set the path to the xalan.jar
+#xalanj1compat.jar=
+
+# Version 1 of xalan
+# http://xml.apache.org/xalan/
+# Uncomment the below and set the path to version 1 xalan.jar
+#xalan1.jar=
+
+# Version 2 of xalan
+# http://xml.apache.org/xalan
+# Uncomment the below and set the path to version 2 xalan.jar
+#xalan2.jar=
+
+# Both the xsl taglib and the ultradev4 ctlx require xerces as their
+# XML API.
+# http://xml.apache.org/xerces-j/
+# Uncomment the below and set the path to the xerces.jar
+#xerces.jar=
+
+# Version 1 of xerces
+# http://xml.apache.org/xerces
+# Uncomment the below and set the path to version 1 xerces.jar
+#xerces1.jar=
+
+# Version 2 of xerces
+# http://xml.apache.org/xerces
+# Uncomment the below and set the path to version 2 xerces.jar
+#xerces2.jar=
+
+# regexp requires the jakarta-oro 2.0 regular expression API.
+# http://jakarta.apache.org/oro/
+# Uncomment the below and set the path to jakarta-oro.jar
+jakarta-oro2.jar=
+
+# xtags requires dom4j 0.7 or later from http://dom4j.org
+# Uncomment the below and set the path to dom4j.jar
+#dom4j.jar=
+
+# bsf requires the Bean Scripting Framework from
+# http://oss.software.ibm.com/developerworks/projects/bsf
+# Uncomment the below and set the path to bsf.jar
+#bsf.jar=
+
+# xtags requires a JAXP 1.1 compatible XML parser
+# http://java.sun.com/products/xml/
+# Uncomment the below and set the path to jaxp.jar
+#jaxp.jar=
+# Uncomment the below and set the path to crimson.jar
+#crimson.jar=
+
+# mailer requires the JavaMail 1.2 API
+# http://java.sun.com/products/javamail/
+# The jar files that come with JavaMail 1.2 should be installed
+# in your $JAVA_HOME/jre/lib/ext directory.
+
+# jndi requires the JNDI API. This comes as part of Java 1.3.
+# If you are using a version of Java prior to Java 1.3 you will
+# need to download the JNDI API from Sun and install it in your
+# $JAVA_HOME/jre/lib/ext directory.
+# http://java.sun.com/products/jndi/
+
+# jmstags requires the jms API
+# http://java.sun.com/products/jms/
+#jms.jar=${base.dir}/../jms1.0.2b/lib/jms.jar
+
+# jmstags requires the commons-digester API
+commons-digester.jar=${base.dir}/../commons-digester/commons-digester.jar
+
+# jmstags requires the commons-beanutils API
+commons-beanutils.jar=${base.dir}/../commons-beanutils-1.1/commons-beanutils.jar
+
+# jmstags requires the commons-collections API
+commons-collections.jar=${base.dir}/../commons-collections-1.0/commons-collections.jar
+
+# jmstags requires the commons-messenger API
+commons-messenger.jar=${base.dir}/../commons-messenger/commons-messenger.jar
+
+# the Cache Taglib requires (and other taglibs in the future may require)
+# the Standard Taglib's standard.jar distribution
+#standard.jar=
+
+#
+# PROJECT STANDARD PROPERTIES
+#
+# The following property values reflect the standard directory organization
+# for the jakarta-taglibs project, and should not be changed or overridden.
+#
+#   build.dir          Base directory for build targets
+#   dist.dir           Base directory for distribution targets
+build.dir = ${base.dir}/build
+dist.dir = ${base.dir}/dist
