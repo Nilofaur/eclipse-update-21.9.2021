@@ -164,7 +164,7 @@ span.price {
             <p><a href="#">Product 2</a> <span class="price">$4</span></p>
             <p><a href="#">Product 3</a> <span class="price">$3</span></p>
             <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-            <p><a href="http://localhost:9777/shopping-cart/orders.jsp">Cart</a> </p> 
+            <p><a href="http://localhost:9777/shopping-cart/orderPaypal.jsp">Cart</a> </p> 
             <hr>
             <p>Total <span class="price" style="color:black"><b>$10</b></span></p>
         </div>
