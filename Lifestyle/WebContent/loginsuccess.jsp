@@ -23,6 +23,15 @@ List<GetLoginId> details = ld.getsqlName("name");
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+body {
+background-image: url('./img/cat.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;  
+  background-size: cover;
+  
+}
+</style>
 <meta charset="ISO-8859-1">
 <title> login success </title>
 </head>

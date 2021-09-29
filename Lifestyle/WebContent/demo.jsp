@@ -1,49 +1,16 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    
+ <%@page import="com.tryme.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-
-<h1>ABOUT YOU :)</h1>
-
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
-
-<style>
-body {
-background-image: url('./img/pencil.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;  
-  background-size: cover;
-  
-}
-</style>
 <meta charset="UTF-8">
-
-<title>aboutme</title>
+<title>demo</title>
 </head>
 <body>
 
-  <% 
-  if(session.getAttribute("username")==null)
-  {
-	  response.sendRedirect("login.jsp");
-  }
-  %>
-
-
-
-<form action="aboutme" method="post">
+<body> 
+   <form action="demo" method="post">
 Current weight in kgs <input type="text" name="weight"> <br>
 Height in cms <input type="text" name="height"> <br>
 age <input type="text" name="age"> <br>
@@ -88,8 +55,10 @@ Dinner calories <input type="text" name="dinner"> <br>
  
 
 </form>
-<iframe src="https://www.nutracheck.co.uk/CaloriesIn/" style="width: 400px; height: 200px;"></iframe>
-
+</body> 
+<p> hi ${everyday_calorie}
+${consumed_calorie}
+${activities_calorie}</p>
 
 </body>
 </html>

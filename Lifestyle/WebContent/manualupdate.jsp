@@ -3,10 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Update</title>
+
+
 </head>
+
 <body>
-manualupdate
+<div class="fade-in-image">
+   <img src="./img/beach.jpg">
+</div>
 </body>
 </html>

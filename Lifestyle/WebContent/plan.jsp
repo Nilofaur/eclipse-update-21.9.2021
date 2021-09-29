@@ -33,6 +33,20 @@
 
 <div class="test">
   <h2>Paris</h2>
+  <p>
+ everyday_maxcalorie is  ${everyday_maxcalorie}
+  <br>
+  consumed calorie is  ${consumed_calorie}
+  <br>
+  burnt_byworkout is ${burnt_byworkout}
+  <br>
+  eod you spent  ${eod_spent}
+  <br>
+  totalbalance_left is (final)   ${totalbalance_left}
+  <br>
+  print eligibility is ${printeligibility}
+	  
+ </p>
   <p>Paris is the capital of France.</p>
 </div>
 
@@ -65,10 +79,15 @@
    </div> 
       <h1 class="text-white">Plan A</h1> <div class="text-white p-3">PLAN A</div>
     </div>
+    
+     
+     
+		
     <div class="col">
     <h1 class="text-white">Plan B</h1>  <div class="text-white p-3">PLAN B</div>
      
     </div>
+     
   </div>
 </div>
   

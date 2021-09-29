@@ -72,7 +72,7 @@
         </li>
         
          <li class="nav-item">
-          <a class="nav-link" href="http://localhost:9777/shopping-cart/index.jsp">Products</a>
+          <a class="nav-link" href="http://localhost:9778/shopping-cart/index.jsp">Products</a>
         </li>
         
     

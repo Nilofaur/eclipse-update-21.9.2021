@@ -9,7 +9,7 @@
 </head>
 <style>
 body {
-background-image: url('./img/beach.jpg');
+background-image: url('./img/lemon.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;  
   background-size: cover;
@@ -22,11 +22,11 @@ background-image: url('./img/beach.jpg');
 		<form action="<%=request.getContextPath()%>/login" method="post">
 			<table style="with: 100%">
 				<tr>
-					<td>UserName</td>
+					<td><h2>UserName</h2></td>
 					<td><input type="text" name="username" /></td>
 				</tr>
 				<tr>
-					<td>Password</td>
+					<td><h2>Password</h2></td>
 					<td><input type="password" name="password" /></td>
 				</tr>
 
