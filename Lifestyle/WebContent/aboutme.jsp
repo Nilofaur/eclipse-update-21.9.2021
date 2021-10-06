@@ -47,11 +47,11 @@ background-image: url('./img/pencil.jpg');
 Current weight in kgs <input type="text" name="weight"> <br>
 Height in cms <input type="text" name="height"> <br>
 age <input type="text" name="age"> <br>
-Goal Weight <input type="text" name="goal "> <br>
+Goal Weight <input type="text" name="goal"> <br>
 
 Ethnicity <input type="text" name="ethnicity"> <br>
 
-  <p>How would you describe your normal activities</p>
+ <p>How would you describe your activity today</p>
   <input type="radio" id="activities" name="activities" value="sedentary">
   <label for="sedentary">Sedentary/Lightly Active</label><br>
 
@@ -60,8 +60,8 @@ Ethnicity <input type="text" name="ethnicity"> <br>
 
   <input type="radio" id="activities" name="activities" value="vigorous">
   <label for="vigorous">Vigorous/ Vigorously active</label><br>
+ 
 
-How long did you do today? <input type="text" name="minutes"> <br>
 
 <p> Preferred Cuisine :</p>
  
@@ -71,24 +71,19 @@ How long did you do today? <input type="text" name="minutes"> <br>
   <label for="english">English</label><br>
   <input type="radio" id="cuisine" name="cuisine" value="mixed">
   <label for="mixed">Mixed</label>
-<br> <br>
-Please use the below app- calorie counter to find the calories spent and update it below:
+
 <br> <br>
 
-Morning meal calories <input type="text" name="morning"> <br>
-Afternoon lunch calories<input type="text" name="lunch"> <br>
-Dinner calories <input type="text" name="dinner"> <br>
+
 
 
 
 
 
  <input type="submit">
- 
- 
+   
 
 </form>
-<iframe src="https://www.nutracheck.co.uk/CaloriesIn/" style="width: 400px; height: 200px;"></iframe>
 
 
 </body>

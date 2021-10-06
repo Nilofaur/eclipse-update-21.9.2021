@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Programme</title>
+    <title>Simply</title>
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -250,64 +250,45 @@ footer {
 }
 
 </style>
-<style>
-html {
-  scroll-behavior: smooth;
-}
-
-#section1 {
-  height: 100px;
-  background-color: pink;
-}
-
-#section2 {
-  height: 100px;
-  background-color: yellow;
-}
-</style>
    
 
  
-<body> 
+<body>
 <header>
      <div class="wrapper">
-        <h1>Lifestyle<span class="color">.</span></h1>
+        <h1>Simply<span class="color">.</span></h1>
         <nav>
             <ul>
-                
-                <li><a href="home.jsp">Home</a></li>
-                <li><a href="http://localhost:9778/shopping-cart/index.jsp">Products</li>
-                <li><a href="register.jsp">Have you Registered?</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Blog</a></li>
             </ul>
         </nav>
     </div>
     </header>
     
-    
-    
-    <div  id="hero-image">
-  
+  <div id="hero-image">
     <div class="wrapper">
-        <h2><strong>Lifestyle App</strong><br/>
-        <br>
-        Programmes for you </h2>
-        <a href="#features" class="button-1">Get Started</a>
+        <h2><strong>A Minimal, clean</strong><br/>
+        layout for web design.</h2>
+        <a href="#" class="button-1">Get Started</a>
     </div>
 </div>
-  
+    
   <div id="features">
     <div class="wrapper">
         <ul>
             <li class="feature-1">
-                <h4>Weight loss Plan</h4>
+                <h4>Easy to Edit</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis turpis ac libero interdum, id fringilla purus feugiat. Etiam malesuada mattis nibh at bibendum.</p>
             </li>
             <li class="feature-2">
-                <h4>Nutrition Plan</h4>
+                <h4>Layered PSD</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis turpis ac libero interdum, id fringilla purus feugiat. Etiam malesuada mattis nibh at bibendum.</p>
             </li>
             <li class="feature-3">
-                <h4>Weight gain Plan </h4>
+                <h4>Ready to Go</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam mollis turpis ac libero interdum, id fringilla purus feugiat. Etiam malesuada mattis nibh at bibendum.</p>
             </li>
              <li class="feature-4">
@@ -324,21 +305,21 @@ html {
         <article>
             <h3>Featured Content</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod leo a nibh dignissim tincidunt. Nam ultricies odio ac neque suscipit volutpat. Ut dictum adipiscing felis sed malesuada. Integer porta sem nec nibh hendrerit imperdiet. </p>
-            <a href="#"><img src="./img/beach.jpg" alt="video placeholder" /></a>
+            <a href="#"><img src="images/video-placeholder.jpg" alt="video placeholder" /></a>
         </article>
     </div>
 </div>
     
  <div id="secondary-content">
     <div class="wrapper">
-        <article style="background-image: url('./img/surf.jpg');">
+        <article style="background-image: url('images/article-image-1.jpg');">
             <div class="overlay">
                 <h4>Secondary Content</h4>
                 <p><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod leo a nibh dignissim tincidunt nam.</small></p>
                 <a href="#" class="more-link">View more</a>
             </div>
         </article>
-        <article style="background-image: url('./img/winter.jpg');">
+        <article style="background-image: url('images/article-image-2.jpg');">
             <div class="overlay">
                 <h4>Secondary Content</h4>
                 <p><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod leo a nibh dignissim tincidunt nam.</small></p>

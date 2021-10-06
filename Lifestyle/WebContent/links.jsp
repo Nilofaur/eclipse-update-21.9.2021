@@ -19,6 +19,20 @@
     <!-- MDB -->
     <link rel="stylesheet" href="css/mdb.min.css" />
   </head>
+  
+  
+<%
+
+//SESSION
+HttpSession sess = request.getSession(false); //use false to use the existing session
+Object username=sess.getAttribute("username");//this will return username anytime in the session
+
+
+%>
+
+  
+  
+  
   <body>
     <!-- Start your project here-->
    
@@ -57,53 +71,35 @@
           <a class="nav-link" href="http://localhost:9091/">Payment Gateway</a>
         </li>
         
-        
-        
-         <li class="nav-item">
-          <a class="nav-link" href="plan.jsp">Plans</a>
+        <li class="nav-item">
+          <a class="nav-link" href="aboutme.jsp?name=${username}">About you</a>
         </li>
         
          <li class="nav-item">
-          <a class="nav-link" href="manualupdate.jsp">Manual Update</a>
+          <a class="nav-link" href="plan.jsp?name=${username}">Plans</a>
         </li>
         
          <li class="nav-item">
-          <a class="nav-link" href="report.jsp">Report</a>
+          <a class="nav-link" href="manualupdate.jsp?name=${username}">Manual Update</a>
+        </li>
+        
+         <li class="nav-item">
+          <a class="nav-link" href="report.jsp?name=${username}">Report</a>
         </li>
         
          <li class="nav-item">
           <a class="nav-link" href="http://localhost:9778/shopping-cart/index.jsp">Products</a>
         </li>
         
+   
+        
+        <li class="nav-item">
+          <a class="nav-link" href="aboutme.jsp">Fill the form</a>
+        </li>
     
 
-        <!-- Navbar dropdown -->
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-mdb-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown
-          </a>
-          <!-- Dropdown menu -->
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="register.jsp">Register</a></li>
-            <li><a class="dropdown-item" href="login.jsp">Login</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li>
-              <a class="dropdown-item" href="#">logout</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
-            >Disabled</a
-          >
-        </li>
+        
+      
       </ul>
       <!-- Left links -->
 
@@ -129,6 +125,9 @@
   <!-- Container wrapper -->
 </nav>
 <!-- Navbar -->
+
+
+
     <!-- End your project here-->
 
     <!-- MDB -->

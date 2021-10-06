@@ -17,6 +17,23 @@ background-image: url('./img/lemon.jpg');
 }
 </style>
 <body>
+
+<%
+
+//SESSION
+HttpSession sess = request.getSession(false); //use false to use the existing session
+Object n=sess.getAttribute("n");//this will return username anytime in the session
+Object success=sess.getAttribute("success");//this will return password Any time in the session
+
+%>
+
+  <% 
+  if(success!=null)
+  {
+	  out.println("Welcome"+" "+n);
+  }
+  %>
+
 	<div align="center">
 		<h1>Login Form</h1>
 		<form action="<%=request.getContextPath()%>/login" method="post">

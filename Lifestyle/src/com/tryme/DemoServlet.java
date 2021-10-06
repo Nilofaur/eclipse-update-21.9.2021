@@ -56,15 +56,15 @@ public class DemoServlet extends HttpServlet {
 		 
 		 // store the values of methods 
 	          
-	          double everyday_calorie= Integer.parseInt((df.format(AboutmeServlet.tee())));
-	          double consumed_calorie= Integer.parseInt((df.format(AboutmeServlet.consumed_calories(morning,lunch,dinner))));
-	         double activities_calorie= Integer.parseInt((df.format(AboutmeServlet.activities_calories(minutes,weight))));
+	         // double everyday_calorie= Integer.parseInt((df.format(AboutmeServlet.tee())));
+	        //  double consumed_calorie= Integer.parseInt((df.format(AboutmeServlet.consumed_calories(morning,lunch,dinner))));
+	       //  double activities_calorie= Integer.parseInt((df.format(AboutmeServlet.activities_calories(minutes,weight))));
 		 
 		// set value so it can be forwarded to JSP
 	          
-	         req.setAttribute("everyday_calorie",everyday_calorie);
-	         req.setAttribute("consumed_calorie",consumed_calorie);
-	         req.setAttribute("activities_calorie",activities_calorie);
+	        // req.setAttribute("everyday_calorie",everyday_calorie);
+	       //  req.setAttribute("consumed_calorie",consumed_calorie);
+	       //  req.setAttribute("activities_calorie",activities_calorie);
 		 
 	    // forward it to JSP
 	          
