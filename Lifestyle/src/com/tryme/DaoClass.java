@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import com.tryme.*;
+
 
 
 public class DaoClass {
@@ -23,7 +23,7 @@ public class DaoClass {
 		public int id;
 	   
 		String plan=MethodServlet.plan;
-		
+		 double everyday_maxcalorie= MethodServlet.everyday_maxcaloriemethod();
 		//getUserid(); 
 
 		public DaoClass(Connection con) {
@@ -136,15 +136,15 @@ public class DaoClass {
 	        	  String ethnicity =AboutmeServlet.ethnicity;
 	        	  String activity =AboutmeServlet.activity;
 	        	  String cuisine=AboutmeServlet.cuisine;
-	        	  
-	        	System.out.println("plan insert method1"+plan);
-	        	
+	        	 
+	        	  System.out.println("plan insert method1"+plan);
+	        	  System.out.println("everyday max calorie"+everyday_maxcalorie);
 	        	//query = "insert into userdb.Aboutme (userid, weight, height, age, goalweight, ethnicity, activity, cuisine ) values("+userid+","+weight+","+height+","+age+","+goalweight+",'"+ethnicity+"','"+activity+"','"+cuisine+"')";  
 	        
-	    query= "insert into userdb.Aboutme (userid, weight, height, age, goalweight, ethnicity, activity, cuisine , plan) "
-	    		+ "values("+userid+","+weight+","+height+","+age+","+goalweight+",'"+ethnicity+"','"+activity+"','"+cuisine+"','"+plan+"') "
+	    query= "insert into userdb.Aboutme (userid, weight, height, age, goalweight, ethnicity, activity, cuisine , plan, everyday_maxcalorie) "
+	    		+ "values("+userid+","+weight+","+height+","+age+","+goalweight+",'"+ethnicity+"','"+activity+"','"+cuisine+"','"+plan+"',"+everyday_maxcalorie+") "
 		        + "ON DUPLICATE KEY UPDATE userid = "+userid+",weight="+weight+",height="+height+",age="+age+","
-		        + "goalweight="+goalweight+","+ "ethnicity='"+ethnicity+"',activity='"+activity+"',cuisine='"+cuisine+"',plan='"+plan+"'";	        	
+		        + "goalweight="+goalweight+","+ "ethnicity='"+ethnicity+"',activity='"+activity+"',cuisine='"+cuisine+"',plan='"+plan+"',everyday_maxcalorie="+everyday_maxcalorie+"";	        	
 	        	
 	        	
 	        	

@@ -34,13 +34,7 @@ background-image: url('./img/pencil.jpg');
 </head>
 <body>
 
-  <% 
-  if(session.getAttribute("username")==null)
-  {
-	  response.sendRedirect("login.jsp");
-  }
-  %>
-
+ 
 
 
 <form action="aboutme" method="post">

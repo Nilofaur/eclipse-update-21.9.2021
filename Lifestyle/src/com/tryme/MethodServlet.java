@@ -13,21 +13,22 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/method")
 public class MethodServlet extends HttpServlet {
 	
-	private static int weightcategory;
-	private static double height;
-	private static double weight;
-	private static int age;
-	private static String activity;
+	public static int weightcategory;
+	public static double height;
+	public static double weight;
+	public static int age;
+	public static String activity;
 	
-	private static double morning;
-	private static double lunch;
-	private static double dinner;
-	private static int minutes;
-	private static double today_eod;
-	private static double balance_result;
-	private static String print_eligibility;
+	public static double morning;
+	public static double lunch;
+	public static double dinner;
+	public static int minutes;
+	public static double today_eod;
+	public static double balance_result;
+	public static String print_eligibility;
 	public static String plan;
-	private static double bmi;
+	static double everyday_maxcalorie;
+	public static double bmi;
 
 	//METHOD 1
 		static boolean betweenHeight(int x,int min,int max) 
@@ -80,7 +81,7 @@ public class MethodServlet extends HttpServlet {
 		}
 		//METHOD 6
 		
-	   static double pal( String activity) {
+		 public  static double pal( String activity) {
 		
 			double a = 0;
 		if ( activity.equalsIgnoreCase("sedentary"))
@@ -112,9 +113,9 @@ public class MethodServlet extends HttpServlet {
 		   double bmr=MethodServlet.BMR(AboutmeServlet.height, AboutmeServlet.weight, AboutmeServlet.age);
 		   double pal=MethodServlet.pal(AboutmeServlet.activity);
 		   
-		   double everyday_maxcaloriemethod=bmr*pal;
-		   System.out.println("Tee: Everyday calorie for a person "+everyday_maxcaloriemethod);
-		return everyday_maxcaloriemethod;
+		    everyday_maxcalorie=bmr*pal;
+		   System.out.println("Tee: Everyday calorie for a person "+everyday_maxcalorie);
+		return everyday_maxcalorie;
 	   }
 	   
 	   
@@ -250,7 +251,7 @@ public class MethodServlet extends HttpServlet {
 			}
 			if (weightcategory==4)
 			{
-				print_eligibility="You re recommended to lose weight quickly so weight lose programme is recommended";
+				print_eligibility="You re obese so the app recommend you to lose weight quickly so weight rapidlose programme is recommended";
 					System.out.println( print_eligibility); 
 					plan="rapidlose";
 			}

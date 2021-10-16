@@ -28,6 +28,8 @@ static String ethnicity;
 static String cuisine;
 	static double met;
 	static String activity;
+    
+//static double everyday_maxcalorie=MethodServlet.everyday_maxcaloriemethod();
 
 	
 	//METHOD 14
@@ -40,15 +42,15 @@ static String cuisine;
 
 	public static boolean sql()
 	{
-		//System.out.println("sql method line 43");
+		
 
     DaoClass ld ;
 	try {
-//System.out.println("sql method line 46");
+
 		ld = new DaoClass(Dbcon.getConnection());
-		//System.out.println("sql method line 48");
+
 		System.out.println("INSERT 1 method " +" "+ld.insert1());
-		//System.out.println("insert method"+" "+ld.insert(weight, height, age, goal, ethnicity, activity, cuisine));
+
 	} catch (ClassNotFoundException ee) {
 		// TODO Auto-generated catch block
 		ee.printStackTrace();
@@ -58,6 +60,7 @@ static String cuisine;
 	}
 	return false;
 	}
+	
 	
 	
 	
@@ -79,16 +82,13 @@ static String cuisine;
 		 met =MethodServlet.MET(activity);
 	
 		 
-	
-	      
 	      //CALL
 		MethodServlet.eligibility(age);
-		 MethodServlet.everyday_maxcaloriemethod();
+		//MethodServlet.everyday_maxcaloriemethod();
 		
 
 		 // store the values from the methods 
-	         
-      double everyday_maxcalorie=MethodServlet.everyday_maxcaloriemethod();
+
  
       String printeligibility=MethodServlet.eligibility(age);
       System.out.println( "plan variable = "+MethodServlet.plan);
@@ -99,7 +99,7 @@ static String cuisine;
      
       sess.setAttribute("height", height);
       sess.setAttribute("age", age);
-      sess.setAttribute("everyday_maxcalorie",everyday_maxcalorie);
+    //sess.setAttribute("everyday_maxcalorie",everyday_maxcalorie);
 	  sess.setAttribute("printeligibility", printeligibility);
 	  sess.setAttribute("plan", plan);
      

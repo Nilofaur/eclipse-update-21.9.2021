@@ -27,7 +27,7 @@ public class LoginDao {
         		          //jdbc:mysql://localhost:3306/schemanew", "root", "secret"
             // Step 2:Create a statement using connection object
             PreparedStatement preparedStatement = connection
-            .prepareStatement("select * from registeruser where name = ? and pass = ? ")) {
+            .prepareStatement("select * from userdb.registeruser where name = ? and pass = ? ")) {
             preparedStatement.setString(1, loginBean.getUsername());
             preparedStatement.setString(2, loginBean.getPassword());
 

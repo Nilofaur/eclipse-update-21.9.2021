@@ -46,6 +46,7 @@ public static String un;
                 //FILENAME
                 
                 response.sendRedirect("login.jsp");
+               // session.invalidate();
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

@@ -49,7 +49,9 @@ Object success=sess.getAttribute("success");//this will return password Any time
 
 			</table>
 			<input type="submit" value="Submit" />
+			 <a href="#">I forgot my password</a>
 		</form>
 	</div>
+	
 </body>
 </html>
