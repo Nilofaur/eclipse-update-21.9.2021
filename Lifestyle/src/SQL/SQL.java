@@ -10,6 +10,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServlet;
@@ -17,7 +18,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.tryme.AboutmeServlet;
+import com.tryme.DaoClass;
 import com.tryme.LoginServlet;
+import com.tryme.UpdateServlet;
+
+import na.ecomm.model.Product;
 
 public class SQL extends HttpServlet {
 	
@@ -28,12 +34,16 @@ public class SQL extends HttpServlet {
 	static String db = "root";
 	static String password = "secret";
 	static String query="";
+	static String query1="";
 	static PreparedStatement pst;
 	static Connection connection = null;
 	static Statement statement = null;
 	static ResultSet resultSet = null;
 	
-
+	
+	public static int id;
+	public static Double ht;
+	public static int ag;
 	static ResultSet rs = null;
 	static ResultSetMetaData rsmd = null;
 	static int columnsNumber = 0;
@@ -45,42 +55,39 @@ public class SQL extends HttpServlet {
 	static String evening_snack ;
 	public static String dinner;
 	public static String t ;
+	public static String table;
+	public static String name;
+	static List<SQLinitialisation> food =new ArrayList<SQLinitialisation>(); 
+	 public static String tod="";
 	
-	// METHOD 1
-	public static String english ()
+	
+	
+	// username METHOD
+	public static  String un(String name) {
+		
+		SQL.name=name;
+		
+		return name;
+		
+		
+	}
+	
+	
+  
+ 
+ //METHOD 2 FOR DATE
+    
+	public static String tod_date()
 	{
-		SQL.database();
-
-		String sql = "Select * from userdb.english";
-
-		try {
-			resultSet = statement.executeQuery(sql);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println(resultSet);
-		}
-		try {
-			while (resultSet.next()) {
-				days = resultSet.getString("days");
-				breakfast = resultSet.getString("breakfast");
-				lunch = resultSet.getString("lunch");
-				evening_snack = resultSet.getString("evening_snack");
-				dinner = resultSet.getString("dinner");
-			
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		//Instantiate a Date object
+		Date date = new Date();
+		System.out.println(tod);
+		return tod=date.toString();
 		
-		return resultSet.toString();
-		
+	}
+ 
 
-}
-	
-	
-	//METHOD 2 DB CONNECTION
+	//METHOD 3 DB CONNECTION
 	
 	public static void database()
 	{
@@ -91,9 +98,6 @@ public class SQL extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-
-	
 	
 		try {
 			connection = DriverManager.getConnection(connectionUrl + database, db, password);
@@ -111,21 +115,20 @@ public class SQL extends HttpServlet {
 		
 	}
 	
-	//TRY LIST - RETURN METHOD - used this method
+	//TRY LIST - RETURN METHOD 4 - used this method
 	
     
-    public static List<SQLinitialisation> getenglish(String d) {
+    public static List<SQLinitialisation> getenglish(String d, String table) {
     	
     	SQL.database();
     	List<SQLinitialisation> a=new ArrayList<>();
     	
 	        try {
 	        	System.out.println("d (getenglishmethod) "+d);
-	            query = "Select * from userdb.english where days = '"+d+ "'";
-	            
-	            		
+	            query = "Select * from userdb."+table+" where days = '"+d+ "'";
+	            	
 	            pst = SQL.connection.prepareStatement(query);
-	         //   pst.setString(1, "nilo");
+	      
 	            ResultSet rs = pst.executeQuery();
 	        
 	       	 for(int i=0;i<=3;i++)
@@ -140,12 +143,7 @@ public class SQL extends HttpServlet {
 	          row.setLunch(rs.getString("lunch"));
 	          row.setEvening_snack(rs.getString("evening_snack"));
 	          row.setDinner(rs.getString("dinner"));
-	            	 
-	            	 a.add(row);
-	            	 
-	          // dinner=rs.getString(dinner); 	 
-	           
-	            	 
+	          a.add(row);	  	 
 	            }}
 	        } catch (Exception e) {
 	            e.printStackTrace();
@@ -155,94 +153,133 @@ public class SQL extends HttpServlet {
 	        return a;
 	    }
     
+    //METHOD 5 - METHOD TO JUST CALL GETENGLISH METHOD WITH PARAMETERS 
+  
+    public static List<SQLinitialisation> food_table(String days, String table) {
+    List<SQLinitialisation> food = SQL.getenglish(days,table);
     
-	
-	// PRINTS ALL ROWS	  METHOD 3
-    public static  String getenglish1() {
-    	
-    	SQL.database();
-    	
-    	 //SQL.getenglish1();
-	      
-	        
-	            query = "Select * from userdb.english";
-	            		
-	            try {
-					pst = SQL.connection.prepareStatement(query);
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-	         //   pst.setString(1, "nilo");
-	           
-				try {
-					rs = pst.executeQuery();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-	          
-				try {
-					rsmd = rs.getMetaData();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-	          
-				try {
-					columnsNumber = rsmd.getColumnCount();
-				} catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-	            
-	            try {
-	            	
-					while (rs.next()) {
-						
-						for(int i = 1 ; i <= columnsNumber; i++){
-
-						   System.out.print(""+rs.getString(i) + " "); //Print one element of a row
-						    breakfast=  rs.getString(breakfast);
-						    days=  rs.getString(days);
-						    lunch=  rs.getString(lunch);
-						  
-						}
-
-						  System.out.println();//Move to the next line to print the next row.           
-
-						    }
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return dinner;
-	     	 
-	   
-	    }
-
-
+	return food;
+    }
+    
+    
     
     public void service(HttpServletRequest request, HttpServletResponse response) throws IOException 
 	{
     	 t = request.getParameter("days");
-    	// TRY SESSION - set value so it can be forwarded to JSP
-        HttpSession sess = request.getSession(); 
-      
-       sess.setAttribute("days", days);
-       sess.setAttribute("breakfast", breakfast);
-       sess.setAttribute("lunch",lunch);
- 	   sess.setAttribute("evening_snack", evening_snack);
- 	   sess.setAttribute("dinner", dinner);
- 	   
+    
 	}
 	
+    //METHOD 6 to get the user id 
+    
+    public static int getUserid(String name) throws SQLException {
+    	
+    	SQL.database();
+    	
+        query = "select userid from registeruser where name = '"+name + "'";
+        System.out.println("login name" +name);
+        		
+        pst = SQL.connection.prepareStatement(query);
+	      
+        ResultSet rs = pst.executeQuery();
+    
+        while (rs.next()) 
+        {
+        System.out.println("id = "+" "+rs.getInt(1));	
+        id = rs.getInt(1);
+        }
+     
+       return id;
+        }
+     
+
+    
+    
+    
+    // METHOD 7: Get weight and height from about me table to be used for manual update jsp
+    // update the other columns 
+    
+    
+   		    public static boolean insert_manual() {
+   		     SQL.database();
+   		    	
+  	        boolean result = false;
+  	        try {
+  	        	int userid = SQL.getUserid(name);
+  	       
+  	        	double bf_cal=UpdateServlet.morning;
+  	        	double lun_cal=UpdateServlet.lunch;
+  	        	double din_cal=UpdateServlet.dinner;
+  	        	String activity=UpdateServlet.Todayactivity;
+  	        	double minutes=UpdateServlet.minutes;
+  	        	double currentweight=UpdateServlet.currentweight;
+  	       
+  	        
+ query=" INSERT INTO userdb.manual_update (userid, height,age)"
+  	+ "SELECT userid, height, age FROM userdb.aboutme where userid="+userid+";";
+ 
+ query1="UPDATE userdb.manual_update SET  `bf_cal` = "+bf_cal+", `lun_cal` = "+lun_cal+", `din_cal` = "+din_cal+","
+  + "`activity` = '"+activity+"', `minutes` = "+minutes+", `weight` = "+currentweight+",`tod` = '"+tod+"' WHERE (`userid` = '"+userid+"')";
+
+    pst = SQL.connection.prepareStatement(query);
+    pst.executeUpdate();
+    
+    pst = SQL.connection.prepareStatement(query1);
+    pst.executeUpdate();
+ 
+  	         result = true;
+  	        } catch (SQLException e) {
+  	            System.out.println(e.getMessage());
+  	        }
+  	        return result;
+  	    }
+  	    
+  // METHOD 8 get height and age from aboutme table and store it in a variable to be displayed on manualupdate.jsp
+   		    
+   		    public static void get_htage ()
+   		    {
+   		    	SQL.database();
+   		    	int userid = 18;
+				try {
+				//	userid = SQL.getUserid(name);
+				
+   		    	query="Select height,age from userdb.aboutme where userid = "+userid+";";
+   		    	pst= SQL.connection.prepareStatement(query);
+   		        pst.executeQuery();
+   		      
+   		     ResultSet rs = pst.executeQuery();
+   		    
+   	        while (rs.next()) 
+   	        {
+   	        System.out.println("height = "+" "+rs.getInt(1));	
+   	     System.out.println("age = "+" "+rs.getInt(2));	
+   	        ht = rs.getDouble(1);
+   	        ag= rs.getInt(2);
+   	        
+   	        }
+   	     
+   	       return ;
+				
+   		 } catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+   		    	
+				return;
+   		    	
+   		 }	    }
+   		    
+   		    
+    
 
 	public static void main(String[] args) {
 		
-	
-	   // System.out.println(" PSVM: List:  "+SQL.getenglish(t));
-	  //  SQL.getenglish1();
+get_htage();
+	System.out.println(ht);
+			
+		
+//food = SQL.food_table("mon", "asian");
+//System.out.println(food);
+	// System.out.println(" PSVM: List:  "+SQL.getenglish("mon", "asian"));
+	 
       
 }
 }

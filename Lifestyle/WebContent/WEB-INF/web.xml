@@ -50,6 +50,10 @@
  <url-pattern>/aaboutme </url-pattern>
  </servlet-mapping>
 
+  <session-config>
+    <session-timeout>0</session-timeout>
+  </session-config>
+
 </web-app>
  
  

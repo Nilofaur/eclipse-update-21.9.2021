@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import SQL.SQL;
+
 //import net.javaguides.login.bean.LoginBean;
 //import net.javaguides.login.database.LoginDao;
 
@@ -19,15 +21,17 @@ import javax.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private LoginDao loginDao;
+    public static String username;
+    public static   String name2 ;
 public static String un;
     public void init() {
         loginDao = new LoginDao();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 
-        String username = request.getParameter("username");
+        username = request.getParameter("username");
         String password = request.getParameter("password");
         LoginBean loginBean = new LoginBean();
         loginBean.setUsername(username);
@@ -40,13 +44,15 @@ public static String un;
                  response.sendRedirect("loginsuccess.jsp?name="+username);
                  un=username;
                  System.out.println(un + " "  + "logged in :) ");
+                 SQL.un(un);
+                name2 = DaoClass.un(un);
             } else {
                 HttpSession session = request.getSession();
                 session.setAttribute("user", username);
                 //FILENAME
                 
                 response.sendRedirect("login.jsp");
-               // session.invalidate();
+               session.invalidate();
             }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();

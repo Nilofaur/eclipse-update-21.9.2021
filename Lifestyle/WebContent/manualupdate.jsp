@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   <%@page import= "SQL.*"%>      
+     
+  <%
+ String tod=SQL.tod_date();
+  SQL.get_htage();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -67,18 +73,17 @@ Dinner calories <input type="text" name="dinner"> <br>
 How long did you workout/walk today? (minutes) <input type="text" name="minutes"> <br>
 Your current weight <input type="text" name="currentweight" > <br>
         
-Your height <input type="text" name="height"  value="${height}" readonly>  <br>
+Your height <input type="text" name="height"  value="<%=SQL.ht %>" readonly >  <br>
 
-Your age <input type="text" name="age" value="${age}" readonly > <br>
+Your age <input type="text" name="age" value="<%=SQL.ag %>"  > <br>
 <input type="submit">
 
-
-	
 
 
 </form>
 
 <br>
+
 <a class="btn btn-light" href="home.jsp">Go back to Home</a>
 </div>
 </body>

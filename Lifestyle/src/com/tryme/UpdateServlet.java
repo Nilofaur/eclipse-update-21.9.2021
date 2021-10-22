@@ -2,6 +2,7 @@ package com.tryme;
 
 import java.io.IOException;
 
+import SQL.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,19 +18,22 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/update")
 public class UpdateServlet extends HttpServlet {
 	
-	static String Todayactivity;
-	static double morning;
-	static double lunch;
-	static double dinner;
-	static int minutes;
-	static double currentweight;
-	static double height;
-	static int age;
-	static double met1;
-	
+	public static String Todayactivity;
+	public static double morning;
+	public static double lunch;
+	public static double dinner;
+	public static int minutes;
+	public static double currentweight;
+	public static double height;
+	public static int age;
+	public static double met1;
+	public static String name ;
 	
 	protected void service(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 	
+		
+	
+
 		 Todayactivity= req.getParameter("todayactivities");
 		 morning= Double.parseDouble(req.getParameter("morning"));	
 		 lunch= Double.parseDouble(req.getParameter("lunch"));	
@@ -58,10 +62,11 @@ public class UpdateServlet extends HttpServlet {
 		
 		//TRY SESSION
 		
-		HttpSession sess = req.getSession(false); //use false to use the existing session
+		HttpSession sess = req.getSession(); //use false to use the existing session
 		//sess.getAttribute("weight");//this will return username anytime in the session
 		sess.getAttribute("height");//this will return password Any time in the session
 		sess.getAttribute("age");
+		
 		//SET VALUE TO BE FORWARDED TO JSP
 		   req.setAttribute("everyday_maxcalorie1",everyday_maxcalorie1);
 		   req.setAttribute("consumed_calories",consumed_calories);
@@ -71,9 +76,12 @@ public class UpdateServlet extends HttpServlet {
 		   req.setAttribute("met1", met1);
 		   
 		   //FORWARD TO JSP
-	          
-	          RequestDispatcher disp = req.getRequestDispatcher("/dashboard.jsp");
+		
+	          RequestDispatcher disp = req.getRequestDispatcher("/dashboard.jsp?name="+name+"");
+	         
+	          SQL.insert_manual();
 	          try {
+	        	
 				disp.forward(req, res);
 			} catch (ServletException | IOException e) {
 				// TODO Auto-generated catch bloc

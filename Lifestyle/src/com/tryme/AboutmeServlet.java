@@ -84,7 +84,7 @@ static String cuisine;
 		 
 	      //CALL
 		MethodServlet.eligibility(age);
-		//MethodServlet.everyday_maxcaloriemethod();
+	
 		
 
 		 // store the values from the methods 

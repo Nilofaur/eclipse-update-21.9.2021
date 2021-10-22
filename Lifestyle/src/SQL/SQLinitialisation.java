@@ -3,9 +3,35 @@ package SQL;
 public class SQLinitialisation {
 
 	
-	
-	public  String days ;
-	 public String getDays() {
+	String breakfast ;
+	 String lunch ;
+	 String evening_snack ;
+	  String dinner ;
+	 	public  String days ;
+	 	
+	 	
+	 	// ABOUTME PAGE TO MANUALUPDATE
+	 	
+	 	String height;
+	 	String weight;
+	 	
+	 	public String getHeight() {
+			return height;
+		}
+		public void setHeight(String height) {
+			this.height = height;
+		}
+		public String getWeight() {
+			return weight;
+		}
+		public void setWeight(String weight) {
+			this.weight = weight;
+		}
+
+	 	
+	 	
+	 
+	 	public String getDays() {
 		return days;
 	}
 	public void setDays(String days) {
@@ -35,11 +61,7 @@ public class SQLinitialisation {
 	public void setDinner(String dinner) {
 		this.dinner = dinner;
 	}
-	String breakfast ;
-	 String lunch ;
-	 String evening_snack ;
-	  String dinner ;
-	 
+
 	 @Override
 		public String toString() {
 		 

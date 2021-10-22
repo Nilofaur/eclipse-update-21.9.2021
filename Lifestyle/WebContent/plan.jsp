@@ -29,11 +29,11 @@ String cuisine = "";
 double everyday_maxcalorie = 0;
 String plan = "";
 
-String dinner="";
 
 String days1;
 String d;
-
+String table1="";
+List<SQLinitialisation> food =new ArrayList<SQLinitialisation>(); 
 
 
 try {
@@ -48,7 +48,6 @@ ResultSet resultSet = null;
 
 <%
 days1=request.getParameter("days");
-List<SQLinitialisation> food = SQL.getenglish(days1);
 
 %>
 
@@ -75,13 +74,6 @@ List<SQLinitialisation> food = SQL.getenglish(days1);
 </head>
 <body>
 
-
-	<%
-		//SESSION
-	HttpSession sess1 = request.getSession(false); //use false to use the existing session
-	sess1.getAttribute("dinner");//this will return password Any time in the session
-	%>
-
 	<%
 		try {
 		connection = DriverManager.getConnection(connectionUrl + database, db, password);
@@ -102,8 +94,7 @@ List<SQLinitialisation> food = SQL.getenglish(days1);
 	cuisine = resultSet.getString("cuisine");
 	everyday_maxcalorie = resultSet.getDouble("everyday_maxcalorie");
 	plan = resultSet.getString("plan");
-	dinner=SQL.dinner;
-	System.out.println(dinner);
+	
 	%>
 
 	<%
@@ -169,17 +160,19 @@ List<SQLinitialisation> food = SQL.getenglish(days1);
 						if (plan.equalsIgnoreCase("weightlose")) {
 
 							if (cuisine.equalsIgnoreCase("english")) {
-								System.out.println(dinner);
+							
 						%>
 
 					</div>
 					<h1 class="text-white"></h1>
 					<div class="text-white p-3">
-					
-					
-					<p>
+
+
+						<p>
 
 							<%
+							food=SQL.food_table(days1, "eng_lose");
+							//just printing th o/p from the method
 								out.println("food = " + food);
 							if (!food.isEmpty()) {
 								for (SQLinitialisation ss : food) {
@@ -216,25 +209,26 @@ List<SQLinitialisation> food = SQL.getenglish(days1);
 			</div>
 			<h1 class="text-white"></h1>
 			<div class="text-white p-3">
-			<p>
+				<p>
 
-							<%
+					<%
+							food=SQL.food_table(days1, "asian_lose");
 								out.println("food = " + food);
 							if (!food.isEmpty()) {
 								for (SQLinitialisation ss : food) {
 							%>
 
-							<%
+					<%
 								}
 							} else {
 
 							out.println(":(");
 							}
 							%>
-						</p>
-				
-			
-			
+				</p>
+
+
+
 			</div>
 		</div>
 
@@ -254,9 +248,65 @@ List<SQLinitialisation> food = SQL.getenglish(days1);
 
 	</div>
 	<h1 class="text-white"></h1>
-	<div class="text-white p-3"><p>
+	<div class="text-white p-3">
+		<p>
+
+			<%
+								out.println("food = " + food);
+							if (!food.isEmpty()) {
+								for (SQLinitialisation ss : food) {
+							%>
+
+			<%
+								}
+							} else {
+
+							out.println(":(");
+							}
+							%>
+		</p>
+	</div>
+
+
+
+	<%
+		}
+	}
+	%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%
+							// 1. WEIGHTLOSE 2.NUTRITION 3.WEIGHTGAIN 4.RAPIDLOSE
+						// 1.ENGLISH 2.ASIAN 3.VEG
+
+						//CASE 2-1 START:
+						if (plan.equalsIgnoreCase("nutrition")) {
+
+							if (cuisine.equalsIgnoreCase("english")) {
+							
+						%>
+
+					</div>
+					<h1 class="text-white"></h1>
+					<div class="text-white p-3">
+
+
+						<p>
 
 							<%
+							food=SQL.food_table(days1, "eng_nut");
+							//just printing th o/p from the method
 								out.println("food = " + food);
 							if (!food.isEmpty()) {
 								for (SQLinitialisation ss : food) {
@@ -272,6 +322,86 @@ List<SQLinitialisation> food = SQL.getenglish(days1);
 						</p>
 					</div>
 
+				</div>
+
+				<%
+					}
+				}
+				%>
+
+
+				<%
+					// 1. WEIGHTLOSE 2.NUTRITION 3.WEIGHTGAIN 4.RAPIDLOSE
+				// 1.ENGLISH 2.ASIAN 3.VEG
+
+				//CASE 2-2 START:
+				if (plan.equalsIgnoreCase("nutrition")) {
+
+					if (cuisine.equalsIgnoreCase("asian")) {
+				%>
+
+			</div>
+			<h1 class="text-white"></h1>
+			<div class="text-white p-3">
+				<p>
+
+					<%
+							food=SQL.food_table(days1, "asian_nut");
+								out.println("food = " + food);
+							if (!food.isEmpty()) {
+								for (SQLinitialisation ss : food) {
+							%>
+
+					<%
+								}
+							} else {
+
+							out.println(":(");
+							}
+							%>
+				</p>
+
+
+
+			</div>
+		</div>
+
+		<%
+			}
+		}
+		%>
+		<%
+			// 1. WEIGHTLOSE 2.NUTRITION 3.WEIGHTGAIN 4.RAPIDLOSE
+		// 1.ENGLISH 2.ASIAN 3.VEG
+
+		//CASE 1-3 START:
+		if (plan.equalsIgnoreCase("nutrition")) {
+
+			if (cuisine.equalsIgnoreCase("mixed")) {
+		%>
+
+	</div>
+	<h1 class="text-white"></h1>
+	<div class="text-white p-3">
+		<p>
+
+			<%
+		            	food=SQL.food_table(days1, "veg_nut");
+								out.println("food = " + food);
+							if (!food.isEmpty()) {
+								for (SQLinitialisation ss : food) {
+							%>
+
+			<%
+								}
+							} else {
+
+							out.println(":(");
+							}
+							%>
+		</p>
+	</div>
+
 
 
 	<%
@@ -281,7 +411,285 @@ List<SQLinitialisation> food = SQL.getenglish(days1);
 
 
 
-<%-- <%
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%
+							// 1. WEIGHTLOSE 2.NUTRITION 3.WEIGHTGAIN 4.RAPIDLOSE
+						// 1.ENGLISH 2.ASIAN 3.VEG
+
+						//CASE 3-1 START:
+						if (plan.equalsIgnoreCase("weightgain")) {
+
+							if (cuisine.equalsIgnoreCase("english")) {
+							
+						%>
+
+					</div>
+					<h1 class="text-white"></h1>
+					<div class="text-white p-3">
+
+
+						<p>
+
+							<%
+							food=SQL.food_table(days1, "eng_gain");
+							//just printing th o/p from the method
+								out.println("food = " + food);
+							if (!food.isEmpty()) {
+								for (SQLinitialisation ss : food) {
+							%>
+
+							<%
+								}
+							} else {
+
+							out.println(":(");
+							}
+							%>
+						</p>
+					</div>
+
+				</div>
+
+				<%
+					}
+				}
+				%>
+
+
+				<%
+					// 1. WEIGHTLOSE 2.NUTRITION 3.WEIGHTGAIN 4.RAPIDLOSE
+				// 1.ENGLISH 2.ASIAN 3.VEG
+
+				//CASE 1-2 START:
+				if (plan.equalsIgnoreCase("weightgain")) {
+
+					if (cuisine.equalsIgnoreCase("asian")) {
+				%>
+
+			</div>
+			<h1 class="text-white"></h1>
+			<div class="text-white p-3">
+				<p>
+
+					<%
+							food=SQL.food_table(days1, "asian_gain");
+								out.println("food = " + food);
+							if (!food.isEmpty()) {
+								for (SQLinitialisation ss : food) {
+							%>
+
+					<%
+								}
+							} else {
+
+							out.println(":(");
+							}
+							%>
+				</p>
+
+
+
+			</div>
+		</div>
+
+		<%
+			}
+		}
+		%>
+		<%
+			// 1. WEIGHTLOSE 2.NUTRITION 3.WEIGHTGAIN 4.RAPIDLOSE
+		// 1.ENGLISH 2.ASIAN 3.VEG
+
+		//CASE 1-3 START:
+		if (plan.equalsIgnoreCase("weightgain")) {
+
+			if (cuisine.equalsIgnoreCase("mixed")) {
+		%>
+
+	</div>
+	<h1 class="text-white"></h1>
+	<div class="text-white p-3">
+		<p>
+
+			<%
+			food=SQL.food_table(days1, "veg_gain");
+								out.println("food = " + food);
+							if (!food.isEmpty()) {
+								for (SQLinitialisation ss : food) {
+							%>
+
+			<%
+								}
+							} else {
+
+							out.println(":(");
+							}
+							%>
+		</p>
+	</div>
+
+
+
+	<%
+		}
+	}
+	%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%
+							// 1. WEIGHTLOSE 2.NUTRITION 3.WEIGHTGAIN 4.RAPIDLOSE
+						// 1.ENGLISH 2.ASIAN 3.VEG
+
+						//CASE 4-1 START:
+						if (plan.equalsIgnoreCase("rapidlose")) {
+
+							if (cuisine.equalsIgnoreCase("english")) {
+							
+						%>
+
+					</div>
+					<h1 class="text-white"></h1>
+					<div class="text-white p-3">
+
+
+						<p>
+
+							<%
+							food=SQL.food_table(days1, "eng_rapid");
+							//just printing th o/p from the method
+								out.println("food = " + food);
+							if (!food.isEmpty()) {
+								for (SQLinitialisation ss : food) {
+							%>
+
+							<%
+								}
+							} else {
+
+							out.println(":(");
+							}
+							%>
+						</p>
+					</div>
+
+				</div>
+
+				<%
+					}
+				}
+				%>
+
+
+				<%
+					// 1. WEIGHTLOSE 2.NUTRITION 3.WEIGHTGAIN 4.RAPIDLOSE
+				// 1.ENGLISH 2.ASIAN 3.VEG
+
+				//CASE 1-2 START:
+				if (plan.equalsIgnoreCase("rapidlose")) {
+
+					if (cuisine.equalsIgnoreCase("asian")) {
+				%>
+
+			</div>
+			<h1 class="text-white"></h1>
+			<div class="text-white p-3">
+				<p>
+
+					<%
+							food=SQL.food_table(days1, "asian_rapid");
+								out.println("food = " + food);
+							if (!food.isEmpty()) {
+								for (SQLinitialisation ss : food) {
+							%>
+
+					<%
+								}
+							} else {
+
+							out.println(":(");
+							}
+							%>
+				</p>
+
+
+
+			</div>
+		</div>
+
+		<%
+			}
+		}
+		%>
+		<%
+			// 1. WEIGHTLOSE 2.NUTRITION 3.WEIGHTGAIN 4.RAPIDLOSE
+		// 1.ENGLISH 2.ASIAN 3.VEG
+
+		//CASE 1-3 START:
+		if (plan.equalsIgnoreCase("rapidlose")) {
+
+			if (cuisine.equalsIgnoreCase("mixed")) {
+		%>
+
+	</div>
+	<h1 class="text-white"></h1>
+	<div class="text-white p-3">
+		<p>
+
+			<%
+			food=SQL.food_table(days1, "veg_rapid");
+								out.println("food = " + food);
+							if (!food.isEmpty()) {
+								for (SQLinitialisation ss : food) {
+							%>
+
+			<%
+								}
+							} else {
+
+							out.println(":(");
+							}
+							%>
+		</p>
+	</div>
+
+
+
+	<%
+		}
+	}
+	%>
+
+	<%-- <%
 
 System.out.println(days1);
 

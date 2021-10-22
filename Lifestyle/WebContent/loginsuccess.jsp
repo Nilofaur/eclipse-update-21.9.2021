@@ -3,7 +3,7 @@
 <%@page import="com.tryme.*"%>
 <%@page import="com.tryme.GetLoginId"%>
 <%@page import="java.util.*"%>
-
+<%@page import= "java.util.Date"%>
 
 
 
@@ -17,6 +17,14 @@
 	  response.sendRedirect("login.jsp");
   }
   %>
+
+
+<%
+String tod="";
+//Instantiate a Date object
+Date date = new Date();
+tod=date.toString();
+%>
 
 <%@  taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -40,13 +48,17 @@ body {
 		<h3>You have Logged in Successfully</h3>
 
 	<!-- 	<a href="plan.jsp?name=${username}"><button>Please click
-				here to go to your Plan</button> 
+					here to go to your Plan</button> 
 			<br></a> -->
+			
+			<h4>todays date : <%=tod%> </h4>
+			
 			
 			<br> <br> <a href="aboutme.jsp?name=${username}">If
 			you have not filled the about me form please click me </a> 
 		
-		
+		<br> <br> <a href="manualupdate.jsp?name=${username}"> Update your meal and physical activity here 
+			 </a>
 
 	<form action="plan.jsp?name${username}&days=">
 		<label for="days"> Today:</label> <select name="days" id="days">
