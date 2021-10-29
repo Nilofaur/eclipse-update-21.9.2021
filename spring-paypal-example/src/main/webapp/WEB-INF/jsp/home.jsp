@@ -1,4 +1,14 @@
 
+<%@page import="java.util.*"%>
+ <%@page import="na.ecomm.dao.*"%>  
+<%@page import="com.demo.spring.paypal.api.*;"%>
+<%
+int total=tot.get_sum();
+
+int sum=ProductDao.get_sum();
+%>
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -111,13 +121,16 @@ span.price {
 
     </style>
 </head>
+
 <body>
 <div class="row">
     <div class="col-75">
         <div class="container">
             <form method="post"  action="/pay">
                 <div class="col-50">
-                    <h3>Payment html</h3>
+                    <h3>Payment</h3>
+                    <p> hey</p> 
+                    <p>ok <%=sum %> </p>
                     <label>Accepted Cards</label>
                     <div class="icon-container">
                         <i class="fa fa-cc-visa" style="color:navy;"></i>
@@ -125,8 +138,8 @@ span.price {
                         <i class="fa fa-cc-mastercard" style="color:red;"></i>
                         <i class="fa fa-cc-discover" style="color:orange;"></i>
                     </div>
-                    <label for="price">Total Price</label>
-                    <input type="text" id="price" name="price" value="">
+                    <label for="price">Price</label>
+                    <input type="text" id="price" name="price" value=<%=sum%>>
                     <label for="currency">Currency</label>
                     <input type="text" id="currency" name="currency" placeholder="Enter Currency">
                     <label for="method">Payment Method</label>
@@ -150,7 +163,7 @@ span.price {
         
             <p><a href="http://localhost:9778/shopping-cart/cart.jsp">To View Cart</a> </p> 
             <hr>
-            <p>Total <span class="price" style="color:black"><b>Â£ </b></span></p>
+            <p>Total <span class="price" style="color:black"><b>£ </b></span></p>
         </div>
     </div>
 </div>
