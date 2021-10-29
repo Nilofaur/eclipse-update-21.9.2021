@@ -22,7 +22,10 @@
 	if (cart_list != null) {
 		request.setAttribute("cart_list", cart_list);
 	}
-	
+
+	%>
+	<%
+	ProductDao.insert_sum();
 	%>
 <!DOCTYPE html>
 <html>
@@ -64,7 +67,7 @@
 			
 			</tbody>
 		</table>
-		<a class="mx-3 btn btn-primary" href="http://localhost:9091/">Pay</a></div>
+		<a class="mx-3 btn btn-primary" href="http://localhost:9091/home.jsp">Pay</a></div>
 		
 	</div>
 		<%@include file="/includes/footer.jsp"%>

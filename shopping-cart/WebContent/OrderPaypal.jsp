@@ -24,8 +24,17 @@
 		
 		request.setAttribute("cart_list", cart_list);
 	}
+	ProductDao pd = new ProductDao(DbCon.getConnection());
+	pd.getCartProducts(cart_list);
+	double sum=ProductDao.sum;
 	
+	ProductDao.insert_sum();
+request.setAttribute("sum", sum);
+RequestDispatcher disp = request.getRequestDispatcher("/pp.jsp");
+disp.forward(request, response);
+
 	%>
+	
 	
 <!DOCTYPE html>
 <html>
@@ -37,11 +46,11 @@
 
 	<div class="container">
 		<div class="card-header my-3">All Orders</div>
-		
+	
 		<table class="table table-light">
 			<thead>
 				<tr>
-				
+				<p id="demo">Total ? : <%=sum %></p>
 					<th scope="col">Name</th>
 					<br>
 				
@@ -69,6 +78,6 @@
 
 		
 	</div>
-	
+
 </body>
 </html>
